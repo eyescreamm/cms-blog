@@ -47,7 +47,12 @@ export async function getStaticProps({ params }: any) {
 
 export async function getStaticPaths() {
   const posts = await getPosts();
-  const paths = posts.map(({ node: { slug } }) => ({ params: { slug } }));
+  const paths = posts.map(
+    (post: any, key: number) => `/post/${post.node.slug}`
+  );
+  // const paths = posts.map(({ node: { slug } }) => ({ params: { slug } }));
+
+  console.log(paths);
 
   return {
     paths,

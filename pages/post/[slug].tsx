@@ -10,7 +10,7 @@ import {
   CommentsForm,
 } from "../../components";
 
-const PostDetails = ({ post }) => {
+const PostDetails = ({ post }: any) => {
   console.log(post.slug);
   return (
     <div className="container mx-auto px-10 mb-8">

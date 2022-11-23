@@ -52,8 +52,6 @@ export async function getStaticPaths() {
   );
   // const paths = posts.map(({ node: { slug } }) => ({ params: { slug } }));
 
-  console.log(paths);
-
   return {
     paths,
     fallback: false,

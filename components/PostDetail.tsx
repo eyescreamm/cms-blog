@@ -11,7 +11,8 @@ const PostDetail = ({ post }: Post) => {
     index: number,
     text: any,
     obj: any,
-    type?: string
+    type?: string,
+    url?: string
   ) => {
     let modifiedText = text;
     if (obj) {
@@ -26,6 +27,21 @@ const PostDetail = ({ post }: Post) => {
       if (obj.underline) {
         modifiedText = <u key={index}>{text}</u>;
       }
+    }
+
+    if (url) {
+      return (
+        <div>
+          <iframe
+            src={obj.url}
+            width="100%"
+            height="352"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          ></iframe>
+          <br />
+        </div>
+      );
     }
 
     switch (type) {
@@ -117,7 +133,13 @@ const PostDetail = ({ post }: Post) => {
             (item: any, itemIndex: number) =>
               getContentFragment(itemIndex, item.text, item)
           );
-          return getContentFragment(index, children, typeObj, typeObj.type);
+          return getContentFragment(
+            index,
+            children,
+            typeObj,
+            typeObj.type,
+            typeObj.url
+          );
         })}
       </div>
     </div>

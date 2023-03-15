@@ -5,7 +5,7 @@ const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
 export const getPosts = async () => {
   const query = gql`
     query MyQuery {
-      postsConnection {
+      postsConnection(orderBy: createdAt_DESC) {
         edges {
           node {
             author {
@@ -77,7 +77,7 @@ export const getRecentPosts = async () => {
   const query = gql`
     query GetPostDetails() {
       posts(
-        orderBy: createdAt_ASC
+        orderBy: createdAt_DESC
         last: 3
       ) {
         title
@@ -103,6 +103,7 @@ export const getSimilarPosts = async (categories: string, slug: string) => {
           slug_not: $slug
           AND: { categories_some: { slug_in: $categories } }
         }
+        orderBy: createdAt_DESC
         last: 3
       ) {
         title
@@ -167,7 +168,10 @@ export const getPostListByCategory = async (slug: string) => {
   console.log(slug);
   const query = gql`
     query GetPostListByCategory($slug: String) {
-      posts(where: { categories_some: { slug: $slug } }) {
+      posts(
+        where: { categories_some: { slug: $slug } }
+        orderBy: createdAt_DESC
+      ) {
         author {
           bio
           name

@@ -35,7 +35,7 @@ const PostDetail = ({ post }: Post) => {
           <iframe
             src={obj.url}
             width="100%"
-            height="352"
+            height="350"
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             loading="lazy"
           ></iframe>

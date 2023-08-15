@@ -78,7 +78,7 @@ export const getRecentPosts = async () => {
     query GetPostDetails() {
       posts(
         orderBy: createdAt_DESC
-        last: 3
+        first: 3
       ) {
         title
         featuredImage {
@@ -165,7 +165,6 @@ export const getComments = async (slug: string) => {
 };
 
 export const getPostListByCategory = async (slug: string) => {
-  console.log(slug);
   const query = gql`
     query GetPostListByCategory($slug: String) {
       posts(

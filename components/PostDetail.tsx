@@ -69,6 +69,14 @@ const PostDetail = ({ post }: Post) => {
             ))}
           </h4>
         );
+      case "block-quote":
+        return (
+          <p key={index} className="p-8 bg-gray-100 my-4">
+            {modifiedText.map((item: string, i: number) => (
+              <React.Fragment key={i}>{item}</React.Fragment>
+            ))}
+          </p>
+        );
       case "image":
         return (
           <img

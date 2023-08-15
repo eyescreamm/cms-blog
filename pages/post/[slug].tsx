@@ -11,7 +11,6 @@ import {
 } from "../../components";
 
 const PostDetails = ({ post }: any) => {
-  console.log(post.slug);
   return (
     <div className="container mx-auto px-10 mb-8">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
